@@ -1,0 +1,257 @@
+/* Backup of original style.css before carousel text size changes */
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Toggle Button */
+#toggle-btn {
+    position: fixed;
+    top: 30px;
+    left: 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    height: 100%;
+    padding: 15px;
+    transition: width 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+}
+
+
+.sidebar.collapsed {
+    width: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Sidebar List Styles */
+.sidebar ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+    line-height: 1.8rem;
+}
+
+.sidebar ul li:hover {
+    margin: 15px 0;
+    background-color: #232323;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: none;
+}
+
+/* Search Bar Style */
+.search-bar-menu {
+    border-radius: 30px;
+    border: none;
+    padding: 10px 10px;
+    background-color: #232323;
+    color: white;
+    
+}
+
+.search-bar-menu::placeholder {
+    color: white;
+}
+
+.search-btn-menu {
+    border-radius: 20px;
+    border: none;
+    padding: 10px 85px;
+    justify-content: center;
+    margin-left: 35px;
+    background-color: #232323;
+    color: #fff;
+}
+
+.dash-add-btn {
+    margin-left: 565px;
+    padding: 10px 70px;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.dash-add-btn:hover {
+          background-color: #000000;
+}
+/* Content adjustments */
+.header {
+    /* background-image: url(/images/happy-together-portrait-black-family-sofa-bonding-visit-quality-time-smile-group-african-parents-happy-270994912[1]-modified.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 90px 20px;
+    background-color: #6f6f6f;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 50px;
+    text-align: center;
+    margin-top: 100px;
+    gap: 20px;
+  }
+
+.MemberDiv {
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+.Member-Img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+#MaternalDiv {
+    display: grid;
+    gap: 25px;
+
+}
+
+#PaternalDiv {
+    display: grid;
+    gap: 25px;
+}
+
+#CustomDiv {
+    display: grid;
+    gap: 25px;
+}
+  
+
+/*  */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.carousel-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin: 0; /* Ensures no extra space */
+    padding: 0;
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #333;
+    display: none;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: transléateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.prev-btn { left: 10px;  top: 30%; }
+.next-btn { right: 10px; top: 30%; }
+
+/* .sidebar {
+    position: fixed;
+    width: 250px; 
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1000; 
+} */
+.sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100vh;
+    left: -300px; /* Sidebar starts hidden */
+    transition: left 0.3s ease-in-out;
+}
+
+.sidebar.active {
+    left: 0; /* Sidebar opens */
+}
+
+.content {
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.content.expanded {
+    margin-left: 250px; /* Moves content when sidebar opens */
+}
+
+
+
+.header {
+    margin-left: 250px; /* Prevents overlap with sidebar */
+    padding: 20px;
+}
+
+
+
+.carousel-slide:nth-child(1) {
+    background-image: url('/images/IMG-20250607-WA0000[1].jpg'); /* First slide */
+    background-size: cover;
+    background-position: 100% 25%;
+}
+
+.carousel-slide:nth-child(2) {
+    background-image: url('/images/IMG_20250607_161727.jpg'); /* Second slide */
+    background-size: cover;
+    background-position: 100% 31.5%;
+}
+
+.carousel-slide:nth-child(3) {
+    background-image: url('https://th.bing.com/th?id=OPHS.FyD6AqrkZv%2bJrQ474C474&o=5&pid=21.1&w=160&h=188&dpr=1.4'); /* Third slide */
+    background-size: cover;
+    background-position: 100% 40%;
+}
+/*  */

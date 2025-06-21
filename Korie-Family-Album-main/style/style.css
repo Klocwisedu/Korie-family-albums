@@ -1,0 +1,358 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Toggle Button */
+#toggle-btn {
+    position: fixed;
+    top: 30px;
+    left: 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1100; /* Increased z-index to be above sidebar */
+    font-size: 15px; /* Added font-size for icon size consistency */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    height: 100%;
+    padding: 15px;
+    transition: width 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+}
+
+
+.sidebar.collapsed {
+    width: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Sidebar List Styles */
+.sidebar ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+    line-height: 1.8rem;
+}
+
+.sidebar ul li:hover {
+    margin: 15px 0;
+    background-color: #232323;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: none;
+}
+
+/* Search Bar Style */
+.search-bar-menu {
+    border-radius: 30px;
+    border: none;
+    padding: 10px 10px;
+    background-color: #232323;
+    color: white;
+    
+}
+
+.search-bar-menu::placeholder {
+    color: white;
+}
+
+.search-btn-menu {
+    border-radius: 20px;
+    border: none;
+    padding: 10px 85px;
+    justify-content: center;
+    margin-left: 35px;
+    background-color: #232323;
+    color: #fff;
+}
+
+.dash-add-btn {
+    margin-left: 565px;
+    padding: 10px 70px;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.dash-add-btn:hover {
+          background-color: #000000;
+}
+/* Content adjustments */
+.header {
+    /* background-image: url(/images/happy-together-portrait-black-family-sofa-bonding-visit-quality-time-smile-group-african-parents-happy-270994912[1]-modified.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 90px 20px;
+    background-color: #6f6f6f;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 50px;
+    text-align: center;
+    margin-top: 100px;
+    gap: 20px;
+  }
+
+.MemberDiv {
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+.Member-Img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+#MaternalDiv {
+    display: grid;
+    gap: 25px;
+
+}
+
+#PaternalDiv {
+    display: grid;
+    gap: 25px;
+}
+
+#CustomDiv {
+    display: grid;
+    gap: 25px;
+}
+  
+
+/*  */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.download-app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+    background-color: #f7f4f4;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 120px auto;
+}
+
+.download-app > div:first-child {
+    max-width: 500px;
+    text-align: left;
+}
+
+.download-app > div:last-child img {
+    width: 220px;
+    border-radius: 10px;
+}
+
+.carousel-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin: 0; /* Ensures no extra space */
+    padding: 0;
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    padding: 20px; /* Reduced from 40px */
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #333;
+    display: none;
+}
+
+.carousel-slide h1, .carousel-slide p {
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.prev-btn { left: 10px;  top: 30%; }
+.next-btn { right: 10px; top: 30%; }
+
+/* .sidebar {
+    position: fixed;
+    width: 250px; 
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1000; 
+} */
+.sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100vh;
+    left: -300px; /* Sidebar starts hidden */
+    transition: left 0.3s ease-in-out;
+    z-index: 1000; /* Ensure sidebar is below toggle button */
+}
+
+.sidebar.active {
+    left: 0; /* Sidebar opens */
+}
+
+.content {
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.content.expanded {
+    margin-left: 250px; /* Moves content when sidebar opens */
+}
+
+
+
+.header {
+    margin-left: 250px; /* Prevents overlap with sidebar */
+    padding: 20px;
+}
+
+
+
+.carousel-slide:nth-child(1) {
+    background-image: url('/images/IMG-20250607-WA0000[1].jpg'); /* First slide */
+    background-size: cover;
+    background-position: 100% 25%;
+}
+
+.carousel-slide:nth-child(2) {
+    background-image: url('/images/IMG_20250607_161727.jpg'); /* Second slide */
+    background-size: cover;
+    background-position: 100% 31.5%;
+}
+
+.carousel-slide:nth-child(3) {
+    background-image: url('/images/20180826_141403.jpg'); /* Third slide */
+    background-size: cover;
+    background-position: 100% 12%;
+}
+/*  */
+
+
+.About-us {
+    justify-content: center;
+    display : grid;
+    text-align: center;
+    background-color: #f7f4f4;
+    padding: 105px;
+    line-height: 1.8rem;
+}
+.Reset-btn {
+    background-color: #333;
+    color: #fff;
+    border-radius: 20px;
+    padding:7.5px 10px;
+    margin-top: 10px;
+    border: none;
+}
+
+.Reset-btn:hover {
+    background-color: #000000;
+    color: #fff;
+    border-radius: 20px;
+    padding:7.5px 10px;
+    margin-top: 10px;
+    border: none;
+}
+
+.Reset-btn {
+    background-color: #333;
+    color: #fff;
+    border-radius: 20px;
+    padding:7.5px 10px;
+    margin-top: 10px;
+    border: none;
+}
+
+.Reset-btn:hover {
+    background-color: #000000;
+    color: #fff;
+    border-radius: 20px;
+    padding:7.5px 10px;
+    margin-top: 10px;
+    border: none;
+}
+
+#auth-btn {
+    position: fixed;
+    top: 30px; /* Align with logout button */
+    /* right: 20px; */
+    background: #000; /* Black background */
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000; /* Ensures it stays on top */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    transition: all 0.3s ease-in-out; /* Smooth effect */
+}
+
+/* Hover effect for better user experience */
+#auth-btn:hover {
+    background: #333; /* Dark gray on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+.why-section {
+    grid-gap: 100px;
+}
