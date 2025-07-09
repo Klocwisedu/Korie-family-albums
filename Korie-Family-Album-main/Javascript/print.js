@@ -3,15 +3,25 @@ const users = JSON.parse(localStorage.getItem("users")) || [];
 
 // Select the container where images will be displayed
 const userContainer = document.getElementById("user-container");
+let radius;
+if (window.innerWidth < 400) {
+    radius = 100;
+} else if (window.innerWidth < 768) {
+    radius = 150;
+} else if (window.innerWidth > 1024) {
+    radius = 200;
+} else {
+    radius = 200;
+}
 
 // Define circle parameters
-const radius = 200;
+// const radius = 200;
 const centerX = 250;
 const centerY = 250;
 
 let html = "";
 users.forEach((user, index, arr) => {
-    if (user.fileUpload) { 
+    if (user.fileUpload) {
         const angle = (index / arr.length) * (2 * Math.PI);
         const x = centerX + radius * Math.cos(angle);
         const y = centerY + radius * Math.sin(angle);
@@ -45,12 +55,12 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("popup-container").style.display = "flex"; // Show popup
     }
 
-    
-
     // Redirect to sign-in page
-    document.getElementById("popup-signin").addEventListener("click", function () {
-        window.location.href = "sign-up-sign-in.html";
-    });
+    document
+        .getElementById("popup-signin")
+        .addEventListener("click", function () {
+            window.location.href = "sign-up-sign-in.html";
+        });
 });
 /////
 document.addEventListener("DOMContentLoaded", function () {
