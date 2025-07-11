@@ -6,7 +6,7 @@
 
 <!-- Toastify JS -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
+    <link rel="stylesheet" href="/Korie-Family-Album-main/style/loader.css">
     <link rel="stylesheet" href="/Korie-Family-Album-main/style/Add-New-Member.css">
     <link rel="stylesheet" href="/Korie-Family-Album-main/style/style.css">
     <link rel="stylesheet" href="/Korie-Family-Album-main/style/add-new-member-media-query.css">
@@ -15,6 +15,11 @@
     <title>Document</title>
 </head>
 <body>
+
+<div id="loader-container">
+  <span class="loader"></span>
+</div>
+
     <button id="toggle-btn">&#9776;</button>
     <div class="sidebar" id="sidebar">
         <h2 style="text-align: center">Menu</h2>
@@ -54,7 +59,7 @@
     
       </div>
       <script src="/Korie-Family-Album-main/Javascript/Add-New-Member.js"></script>
-      
+      <script src="/Korie-Family-Album-main/Javascript/loader.js"></script>
     <script src="/Korie-Family-Album-main/Javascript/humberger.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
