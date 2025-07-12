@@ -12,12 +12,12 @@ body {
 .container {
   justify-content: center;
     align-items: center;
-    width: 400px;
+    width: 500px;
     padding: 30px;
     background-color: #fff;
     color: #000;
     border-radius: 10px;
-    box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.1);
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
 
@@ -34,10 +34,11 @@ input {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #333;
+    border: none;
     background-color:#f7f7f7;
     border-radius: 5px;
     box-sizing: border-box;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
 }
 
 button {
@@ -48,6 +49,7 @@ button {
     background: #333;
     color: #fff;
     cursor: pointer;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
@@ -61,5 +63,51 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+
+.container {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.decorative-circle {
+    position: absolute;
+    background-color: #333;
+    border-radius: 50%;
+    opacity: 0.15;
+    z-index: 0;
+}
+
+
+.circle1 {
+    background-color: #333;
+    width: 250px;
+    height: 250px;
+    bottom: -100px;
+    right: -100px;
+}
+
+.circle2 {
+    width: 150px;
+    height: 150px;
+    top: -50px;
+    left: -50px;
+}
+
+.circle3 {
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: -60px;
+    transform: translateY(-50%);
+}
+
+
+form,
+a {
+    position: relative;
+    z-index: 1;
 }
 
