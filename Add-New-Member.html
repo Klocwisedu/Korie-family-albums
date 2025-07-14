@@ -32,28 +32,32 @@
         <li><a href="print.html">Print FamilyAlbum</a></li>
       </ul>
     </div>
-    <div>
+    <div class="add-new-Member-div">
       <form id="myForm">
+        <div class="input-div">
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
-        
+        </div>
+
+        <div class="input-div">
         <label for="lname">Last Name</label>
         <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
-        
-        <label for="Family">Side of family Tree</label>
-        <select id="side-of-fam" name="country" required>
+        </div>
+        <div class="input-div">
+             <label for="Family">Side of family Tree</label>
+        </div>
+        <select id="side-of-fam" class="input-div" name="country" required>
             <option value="Paternal">Paternal</option>
             <option value="Maternal">Maternal</option>
             <option value="Custom">Custom</option>
         </select>
-        
-        <label for="fileUpload" style="background-color: #232323; color: #fff; padding: 10px 20px; border-radius: 20px; cursor: pointer; display: inline-block;">Upload a file</label>
-        <input type="file" id="fileUpload" name="fileUpload" accept="image/*, .pdf, .doc" required>
 
-        <section style="justify-content: center; display: grid; margin-top: 10px; width: 100%; margin-top: 20px;">
-          <input class="form-btn" style=" background-color: transparent; color: #fff; padding-top: 15px; padding-bottom: 15px; border-radius: 20px;" type="button" value="Submit" onclick="submitForm()" 
-          
-          />
+        <div class="input-div">
+        <label for="fileUpload">Upload a file</label>
+        <input type="file" id="fileUpload" name="fileUpload" accept="image/*, .pdf, .doc" required>
+        </div>
+        <section class="input-div">
+          <input class="form-btn" type="button" value="Submit" onclick="submitForm()" />
         </section>
     </form>
     
