@@ -157,3 +157,9 @@ display: grid;
   margin-bottom: 2.5px;
   
 }
+
+.Description-text {
+  background-color: #333;
+  border: none;
+  overflow: hidden;
+}

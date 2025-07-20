@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<!-- Toastify CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <head>
+    <!-- Toastify CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
 
-<!-- Toastify JS -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <link rel="stylesheet" href="/Korie-Family-Album-main/style/loader.css">
-    <link rel="stylesheet" href="/Korie-Family-Album-main/style/Add-New-Member.css">
-    <link rel="stylesheet" href="/Korie-Family-Album-main/style/style.css">
-    <link rel="stylesheet" href="/Korie-Family-Album-main/style/add-new-member-media-query.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Toastify JS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <link rel="stylesheet" href="/Korie-Family-Album-main/style/loader.css" />
+    <link
+      rel="stylesheet"
+      href="/Korie-Family-Album-main/style/Add-New-Member.css"
+    />
+    <link rel="stylesheet" href="/Korie-Family-Album-main/style/style.css" />
+    <link
+      rel="stylesheet"
+      href="/Korie-Family-Album-main/style/add-new-member-media-query.css"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-
-<div id="loader-container">
-  <span class="loader"></span>
-</div>
+  </head>
+  <body>
+    <div id="loader-container">
+      <span class="loader"></span>
+    </div>
 
     <button id="toggle-btn">&#9776;</button>
     <div class="sidebar" id="sidebar">
-        <h2 style="text-align: center">Menu</h2>
+      <h2 style="text-align: center">Menu</h2>
       <ul>
         <li><a href="index.html">Return Home</a></li>
         <li><a href="Paternal-Side.html">View Paternal Side</a></li>
@@ -33,58 +45,95 @@
       </ul>
     </div>
     <div class="add-new-Member-div">
-      <form id="myForm">
+      <form id="myForm" novalidate>
         <div class="input-div">
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+          <label for="fname">First Name</label>
+          <input
+            type="text"
+            id="fname"
+            name="firstname"
+            placeholder="Your name.."
+            required
+          />
         </div>
 
         <div class="input-div">
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+          <label for="lname">Last Name</label>
+          <input
+            type="text"
+            id="lname"
+            name="lastname"
+            placeholder="Your last name.."
+            required
+          />
         </div>
         <div class="input-div">
-             <label for="Family">Side of family Tree</label>
+          <label for="Family">Side of family Tree</label>
         </div>
         <select id="side-of-fam" class="input-div" name="country" required>
-            <option value="Paternal">Paternal</option>
-            <option value="Maternal">Maternal</option>
-            <option value="Custom">Custom</option>
+          <option value="Paternal">Paternal</option>
+          <option value="Maternal">Maternal</option>
+          <option value="Custom">Custom</option>
         </select>
 
         <div class="input-div">
-        <label for="fileUpload">Upload a file</label>
-        <input type="file" id="fileUpload" name="fileUpload" accept="image/*, .pdf, .doc" required>
+          <label for="fileUpload">Upload a file</label>
+          <input
+            type="file"
+            id="fileUpload"
+            name="fileUpload"
+            accept="image/*, .pdf, .doc"
+            required
+          />
         </div>
+
+        <div class="input-div">
+          <label for="description">Description</label>
+          <textarea class="Description-text"
+             id="description"
+            name="description"
+            placeholder="Max 30 Characters Ex: I am John's father"
+            rows="4"
+            maxlength="30"
+            required
+          ></textarea>
+        </div>
+
         <section class="input-div">
-          <input class="form-btn" type="button" value="Submit" onclick="submitForm()" />
+          <input
+            class="form-btn"
+            type="button"
+            value="Submit"
+            onclick="submitForm()"
+          />
         </section>
-    </form>
-    
-      </div>
-      <script src="/Korie-Family-Album-main/Javascript/Add-New-Member.js"></script>
-      <script src="/Korie-Family-Album-main/Javascript/loader.js"></script>
+      </form>
+    </div>
+    <script src="/Korie-Family-Album-main/Javascript/Add-New-Member.js"></script>
+    <script src="/Korie-Family-Album-main/Javascript/loader.js"></script>
     <script src="/Korie-Family-Album-main/Javascript/humberger.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-    let user = JSON.parse(localStorage.getItem("currentUser"));
+        let user = JSON.parse(localStorage.getItem("currentUser"));
 
-    if (!user) {
-        console.log("No user logged in, showing popup...");
-        document.getElementById("popup-container").style.display = "flex";
-    }
+        if (!user) {
+          console.log("No user logged in, showing popup...");
+          document.getElementById("popup-container").style.display = "flex";
+        }
 
-    document.getElementById("popup-signin").addEventListener("click", function () {
-        window.location.href = "sign-up-sign-in.html";
-    });
-});
+        document
+          .getElementById("popup-signin")
+          .addEventListener("click", function () {
+            window.location.href = "sign-up-sign-in.html";
+          });
+      });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const user = JSON.parse(localStorage.getItem("currentUser"));
+      document.addEventListener("DOMContentLoaded", function () {
+        const user = JSON.parse(localStorage.getItem("currentUser"));
 
-    if (!user) {
-        const popup = document.createElement("div");
-        popup.innerHTML = `
+        if (!user) {
+          const popup = document.createElement("div");
+          popup.innerHTML = `
             <style>
                 #popup-container {
                     position: fixed;
@@ -130,14 +179,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
         `;
-        document.body.appendChild(popup);
+          document.body.appendChild(popup);
 
-        document.getElementById("popup-signin").addEventListener("click", () => {
-            window.location.href = "sign-up-sign-in.html";
-        });
-    }
-});
+          document
+            .getElementById("popup-signin")
+            .addEventListener("click", () => {
+              window.location.href = "sign-up-sign-in.html";
+            });
+        }
+      });
     </script>
-    
-</body>
+  </body>
 </html>

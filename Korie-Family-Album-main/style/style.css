@@ -267,21 +267,22 @@ body, html {
 
 
 .carousel-slide:nth-child(1) {
-    background-image: url('/Korie-Family-Album-main/images/IMG-20250607-WA0000[1].jpg'); /* First slide */
+    background-image: url('/Korie-Family-Album-main/images/20180824_204758.jpg'); /* First slide */
     background-size: cover;
-    background-position: 100% 25%;
+    background-position: 100% 45%;
 }
 
 .carousel-slide:nth-child(2) {
-    background-image: url('/Korie-Family-Album-main/images/IMG_20250607_161727.jpg'); /* Second slide */
+    background-image: url('/Korie-Family-Album-main/images/20180826_140332.jpg'); /* Second slide */
     background-size: cover;
-    background-position: 100% 31.5%;
+    background-position: 100% 53.5%;
 }
 
 .carousel-slide:nth-child(3) {
     background-image: url('/Korie-Family-Album-main/images/20180826_141403.jpg'); /* Third slide */
     background-size: cover;
     background-position: 100% 12%;
+    
 }
 /*  */
 

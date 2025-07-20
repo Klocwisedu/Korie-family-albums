@@ -209,6 +209,7 @@ function submitForm() {
     const lastName = form.elements["lastname"].value;
     const sideOfFamily = form.elements["country"].value;
     const fileUpload = form.elements["fileUpload"].files[0];
+    const description = form.elements["description"]?.value || "";
 
     if (fileUpload) {
         const reader = new FileReader();
@@ -219,13 +220,14 @@ function submitForm() {
                 firstName,
                 lastName,
                 sideOfFamily,
+                description,
                 fileUpload: base64Image,
             };
 
             users = [...users, userData];
-            form.reset();
             localStorage.setItem("users", JSON.stringify(users));
-            renderUsers();
+            form.reset();
+            renderUsersCustom();
         };
         reader.readAsDataURL(fileUpload);
     } else {
@@ -233,85 +235,57 @@ function submitForm() {
             firstName,
             lastName,
             sideOfFamily,
+            description,
             fileUpload: null,
         };
 
         users.push(userData);
+        localStorage.setItem("users", JSON.stringify(users));
         form.reset();
-        renderUsers();
+        renderUsersCustom();
     }
 }
 
 const CustomMembersDiv = document.getElementById("CustomDiv");
-const CustomMembers = localStorage.getItem("users");
-const CustomUsers = JSON.parse(CustomMembers) || [];
 
-console.log(CustomMembersDiv);
-console.log(CustomUsers);
+function renderUsersCustom() {
+    if (!CustomMembersDiv) return;
 
-const CustomUsersFiltered = CustomUsers.filter(user => user.sideOfFamily === "Custom");
-console.log(CustomUsersFiltered);
+    const allUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const CustomUsersFiltered = allUsers.filter(user => user.sideOfFamily === "Custom");
 
-let htmlCustom = '';
-CustomUsersFiltered.forEach((Member, index) => {
-    htmlCustom += `
-    <div class="MemberDiv" id="CustomMember-${index}">
-        <div class="Member-container">
-            <img class="Member-Img" src="${Member.fileUpload}" alt="Member Image" />
-            <p><strong>First Name:</strong> ${Member.firstName}</p>
-            <p><strong>Last Name:</strong> ${Member.lastName}</p>
-            <p><strong>Side of Family:</strong> ${Member.sideOfFamily}</p>
-            <button 
-                style="background-color:#333; color:#fff; border-radius:20px;" 
+    let htmlCustom = '';
+    CustomUsersFiltered.forEach((Member, index) => {
+        htmlCustom += `
+        <div class="MemberDiv" id="CustomMember-${index}" style="position: relative; padding: 20px; border: 1px solid #ccc; border-radius: 10px; margin-bottom: 20px;">
+            <button
                 onclick="deleteCustomMember(${index})"
-            >
-                Delete
-            </button>
+                style="
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background: transparent;
+                    border: none;
+                    color: #333;
+                    font-size: 22px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: color 0.3s ease;
+                "
+                title="Delete Member"
+            >×</button>
+            <div class="Member-container">
+                <img class="Member-Img" src="${Member.fileUpload || ''}" alt="Member Image" style="max-width:100px; height:auto;"/>
+                <p>${Member.firstName} ${Member.lastName}</p>
+                <p>${Member.description || ''}</p>
+            </div>
         </div>
-    </div>
-    `;
-});
-
-
-if (CustomUsersFiltered.length === 0) {
-    Toastify({
-        text: " No family Members found. Try adding a Family Member.",
-        duration: 4000,
-        gravity: "top",
-        position: "center",
-        style: {
-            background: "#444",
-            color: "#fff",
-            borderRadius: "8px",
-            fontWeight: "bold",
-        },
-    }).showToast();
-
-    CustomMembersDiv.innerHTML = "";
-} else {
-    CustomMembersDiv.innerHTML = htmlCustom;
-}
-
-function deleteCustomMember(index) {
-    CustomUsersFiltered.splice(index, 1);
-
-    const updatedUsers = CustomUsers.filter(user => user.sideOfFamily !== "Custom" || CustomUsersFiltered.includes(user));
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-    const memberDiv = document.getElementById(`CustomMember-${index}`);
-    if (memberDiv) {
-        memberDiv.remove();
-    }
-
-    Toastify({
-        text: "Member deleted!!!",
-        duration: 3000,
-        backgroundColor: "green",
-    }).showToast();
+        `;
+    });
 
     if (CustomUsersFiltered.length === 0) {
         Toastify({
-            text: " No family Members found. Try adding a Family Member.",
+            text: "No family members found. Try adding a family member.",
             duration: 4000,
             gravity: "top",
             position: "center",
@@ -324,26 +298,31 @@ function deleteCustomMember(index) {
         }).showToast();
 
         CustomMembersDiv.innerHTML = "";
+    } else {
+        CustomMembersDiv.innerHTML = htmlCustom;
     }
 }
 
-function refreshPage() {
-    location.reload(); // Reloads the current page
+function deleteCustomMember(index) {
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const CustomUsersFiltered = users.filter(user => user.sideOfFamily === "Custom");
+
+    CustomUsersFiltered.splice(index, 1);
+
+    // Update global users removing deleted custom member
+    const updatedUsers = users.filter(user =>
+        user.sideOfFamily !== "Custom" || CustomUsersFiltered.includes(user)
+    );
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    renderUsersCustom();
+
+    Toastify({
+        text: "Member deleted!",
+        duration: 3000,
+        backgroundColor: "green",
+    }).showToast();
 }
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    let user = JSON.parse(localStorage.getItem("currentUser"));
-
-    if (!user) {
-        console.log("No user logged in, showing popup...");
-        document.getElementById("popup-container").style.display = "flex";
-
-        document.getElementById("popup-signin").addEventListener("click", function () {
-            window.location.href = "sign-up-sign-in.html";
-        });
-    }
-});
 
 document.addEventListener("DOMContentLoaded", function () {
     const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -386,7 +365,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     cursor: pointer;
                     transition: background 0.3s ease;
                 }
-                #popup-close:hover { background: red; }
                 #popup-signin:hover { background: green; }
             </style>
             <div id="popup-container">
@@ -402,4 +380,6 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = "sign-up-sign-in.html";
         });
     }
+
+    renderUsersCustom();
 });

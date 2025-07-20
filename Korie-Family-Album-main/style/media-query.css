@@ -209,5 +209,21 @@ margin-top: 30px;
     .why-section {
     grid-gap: 0!important;
 }
+
+/* ////////// */
+
+.carousel-slide:nth-child(1) {
+    background-position: 50%  !important;
+}
+
+.carousel-slide:nth-child(2) {
+    background-position: center !important;
+}
+
+.carousel-slide:nth-child(3) {
+    background-position: 45% !important;
+    
+}
+/*  */
 }
 
